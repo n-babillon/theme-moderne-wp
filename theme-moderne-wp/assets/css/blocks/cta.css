@@ -1,0 +1,39 @@
+/* ==========================================================================
+   CALL TO ACTION - Styles pour les blocs CTA
+   ========================================================================== */
+
+.cta-block {
+    background: var(--wp--preset--color--primary, #007acc);
+    color: white;
+    padding: var(--wp--preset--spacing--x-large);
+    border-radius: 8px;
+    text-align: center;
+    margin: var(--wp--preset--spacing--large) 0;
+}
+
+.cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--wp--preset--spacing--medium);
+}
+
+.cta-description {
+    font-size: 1.125rem;
+    margin-bottom: var(--wp--preset--spacing--large);
+    opacity: 0.9;
+}
+
+.cta-button {
+    background: white;
+    color: var(--wp--preset--color--primary, #007acc);
+    padding: var(--wp--preset--spacing--medium) var(--wp--preset--spacing--large);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+}

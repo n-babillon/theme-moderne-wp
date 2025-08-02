@@ -1,0 +1,52 @@
+<!--
+ * Title: Image et Texte Séparés
+ * Slug: theme-moderne/image-text-split
+ * Description: Pattern avec image à gauche et titre/texte à droite en mode cover
+ * Categories: theme-moderne
+ * Keywords: image, texte, split, layout, inversé
+ * Viewport Width: 1200
+-->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|x-large","bottom":"var:preset|spacing|x-large","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"neutral","layout":{"type":"constrained","contentSize":"100%"}} -->
+<div class="wp-block-group has-neutral-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--x-large);padding-right:0;padding-bottom:var(--wp--preset--spacing--x-large);padding-left:0">
+    <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"0"}}},"className":"text-image-split reversed"} -->
+    <div class="wp-block-columns text-image-split reversed">
+        <!-- wp:column {"width":"50%","style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}}} -->
+        <div class="wp-block-column" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;flex-basis:50%">
+            <!-- wp:cover {"url":"https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80","hasParallax":false,"dimRatio":0,"customOverlayColor":"#000000","isUserOverlayColor":true,"minHeight":100,"minHeightUnit":"%","style":{"dimensions":{"aspectRatio":"1"}}} -->
+            <div class="wp-block-cover" style="min-height:100%;aspect-ratio:1"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim" style="background-color:#000000"></span><img class="wp-block-cover__image-background" alt="Image descriptive" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" data-object-fit="cover"/><div class="wp-block-cover__inner-container">
+                <!-- wp:paragraph {"align":"center","placeholder":"Écrivez le titre…","fontSize":"large"} -->
+                <p class="has-text-align-center has-large-font-size"></p>
+                <!-- /wp:paragraph -->
+            </div></div>
+            <!-- /wp:cover -->
+        </div>
+        <!-- /wp:column -->
+
+        <!-- wp:column {"width":"50%","style":{"spacing":{"padding":{"top":"var:preset|spacing|x-large","bottom":"var:preset|spacing|x-large","left":"var:preset|spacing|large","right":"var:preset|spacing|x-large"}}}} -->
+        <div class="wp-block-column" style="padding-top:var(--wp--preset--spacing--x-large);padding-right:var(--wp--preset--spacing--x-large);padding-bottom:var(--wp--preset--spacing--x-large);padding-left:var(--wp--preset--spacing--large);flex-basis:50%">
+            <!-- wp:heading {"level":2,"style":{"typography":{"fontSize":"3rem","fontWeight":"700","lineHeight":"1.1"},"spacing":{"margin":{"bottom":"var:preset|spacing|medium"}}},"textColor":"contrast"} -->
+            <h2 class="wp-block-heading has-contrast-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--medium);font-size:3rem;font-weight:700;line-height:1.1">Titre avec image à gauche</h2>
+            <!-- /wp:heading -->
+
+            <!-- wp:paragraph {"style":{"typography":{"fontSize":"1.125rem","lineHeight":"1.6"},"spacing":{"margin":{"bottom":"var:preset|spacing|medium"}}},"textColor":"contrast-2"} -->
+            <p class="has-contrast-2-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--medium);font-size:1.125rem;line-height:1.6">Version inversée du pattern avec l'image à gauche et le contenu à droite. Parfait pour alterner les layouts sur une page.</p>
+            <!-- /wp:paragraph -->
+
+            <!-- wp:paragraph {"style":{"typography":{"fontSize":"1rem","lineHeight":"1.6"},"spacing":{"margin":{"bottom":"var:preset|spacing|large"}}},"textColor":"contrast-2"} -->
+            <p class="has-contrast-2-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--large);font-size:1rem;line-height:1.6">Cette disposition crée un rythme visuel intéressant quand vous utilisez plusieurs sections sur une même page. L'image garde toujours sa hauteur complète en mode cover.</p>
+            <!-- /wp:paragraph -->
+
+            <!-- wp:buttons -->
+            <div class="wp-block-buttons">
+                <!-- wp:button {"backgroundColor":"secondary","textColor":"base","style":{"border":{"radius":"8px"},"typography":{"fontWeight":"600"},"spacing":{"padding":{"left":"var:preset|spacing|large","right":"var:preset|spacing|large","top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium"}}}} -->
+                <div class="wp-block-button"><a class="wp-block-button__link has-base-color has-secondary-background-color has-text-color has-background wp-element-button" style="border-radius:8px;padding-top:var(--wp--preset--spacing--medium);padding-right:var(--wp--preset--spacing--large);padding-bottom:var(--wp--preset--spacing--medium);padding-left:var(--wp--preset--spacing--large);font-weight:600">Découvrir</a></div>
+                <!-- /wp:button -->
+            </div>
+            <!-- /wp:buttons -->
+        </div>
+        <!-- /wp:column -->
+    </div>
+    <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->

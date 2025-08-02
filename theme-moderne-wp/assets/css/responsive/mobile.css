@@ -1,0 +1,141 @@
+/* ==========================================================================
+   RESPONSIVE STYLES - MOBILE
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    
+    /* Typography mobile */
+    h1 {
+        font-size: var(--wp--preset--font-size--large);
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: var(--wp--preset--font-size--medium);
+    }
+    
+    h3 {
+        font-size: var(--wp--preset--font-size--small);
+    }
+    
+    /* Container mobile */
+    .wp-block-group {
+        padding-left: var(--wp--preset--spacing--small);
+        padding-right: var(--wp--preset--spacing--small);
+        padding-top: var(--wp--preset--spacing--small);
+        padding-bottom: var(--wp--preset--spacing--small);
+    }
+    
+    /* Navigation mobile */
+    .main-navigation {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        max-height: 100vh; /* Changé de height à max-height */
+        height: auto;      /* Ajouté pour permettre la flexibilité */
+        background-color: var(--wp--preset--color--base);
+        border-right: 1px solid var(--wp--preset--color--neutral);
+        transition: left 0.3s ease;
+        z-index: 999;
+        overflow-y: auto;
+    }
+    
+    .main-navigation.active {
+        left: 0;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        padding: var(--wp--preset--spacing--medium);
+        gap: 0;
+    }
+    
+    .nav-menu a {
+        display: block;
+        padding: var(--wp--preset--spacing--medium);
+        border-bottom: 1px solid var(--wp--preset--color--neutral);
+    }
+    
+    /* Grid mobile */
+    .wp-block-columns,
+    .cards-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Buttons mobile */
+    .wp-block-buttons {
+        flex-direction: column;
+        gap: var(--wp--preset--spacing--small);
+    }
+    
+    .wp-block-button {
+        width: 100%;
+    }
+    
+    /* Forms mobile */
+    .form-group {
+        margin-bottom: var(--wp--preset--spacing--small);
+    }
+    
+    /* Hero section mobile */
+    .hero-section {
+        padding-top: var(--wp--preset--spacing--medium);
+        padding-bottom: var(--wp--preset--spacing--medium);
+    }
+    
+    /* Footer mobile */
+    .footer-main {
+        padding: var(--wp--preset--spacing--medium) 0;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--wp--preset--spacing--small);
+    }
+    
+    /* Utilities mobile */
+    .text-center-mobile {
+        text-align: center !important;
+    }
+    
+    .hidden-mobile {
+        display: none !important;
+    }
+    
+    .full-width-mobile {
+        width: 100% !important;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    
+    /* Extra small typography */
+    h1 {
+        font-size: var(--wp--preset--font-size--medium);
+    }
+    
+    h2 {
+        font-size: var(--wp--preset--font-size--small);
+    }
+    
+    /* Tighter spacing */
+    .wp-block-group {
+        padding-left: var(--wp--preset--spacing--x-small);
+        padding-right: var(--wp--preset--spacing--x-small);
+    }
+    
+    /* Smaller navigation */
+    .main-navigation {
+        width: 100%;
+        left: -100%;
+    }
+    
+    /* Stack everything */
+    .wp-block-columns .wp-block-column {
+        flex-basis: 100% !important;
+    }
+}

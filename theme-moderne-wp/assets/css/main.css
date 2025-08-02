@@ -1,0 +1,85 @@
+/**
+ * Fichier CSS principal du thème moderne
+ * Importe tous les composants et utilitaires nécessaires
+ */
+
+/* Variables et configuration */
+@import '_variables.css';
+
+/* Base */
+@import 'base/reset.css';
+@import 'base/typography.css';
+
+/* Layout */
+@import 'layout/container.css';
+
+/* Composants */
+@import 'components/buttons.css';
+@import 'components/forms.css';
+@import 'components/cards.css';
+@import 'components/navigation.css';
+@import 'components/header.css';
+@import 'components/footer.css';
+
+/* Patterns */
+@import 'patterns/contact-section.css';
+@import 'patterns/services-grid.css';
+@import 'patterns/text-image-split.css';
+@import 'patterns/gallery-section.css';
+
+/* Blocs personnalisés */
+@import 'blocks/testimonials.css';
+@import 'blocks/cta.css';
+@import 'blocks/gallery-section.css';
+
+/* WordPress spécifique */
+@import 'wordpress/posts.css';
+@import 'wordpress/comments.css';
+@import 'wordpress/widgets.css';
+
+/* Utilitaires */
+@import 'utilities/spacing.css';
+@import 'utilities/colors.css';
+@import 'utilities/display.css';
+@import 'utilities/scroll-fix.css';
+
+/* Responsive */
+@import 'responsive/mobile.css';
+@import 'responsive/tablet.css';
+@import 'responsive/desktop.css';
+
+/* Styles globaux personnalisés */
+body {
+    font-family: var(--wp--preset--font-family--primary);
+    line-height: var(--wp--custom--line-height--body);
+    color: var(--wp--preset--color--contrast);
+    background-color: var(--wp--preset--color--base);
+}
+
+/* Structure de page flexible - CORRIGÉE POUR LE SCROLL */
+html {
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Permettre le contenu de dépasser la viewport */
+    overflow: visible;
+}
+
+main {
+    flex: 1;
+    /* S'assurer que main peut s'étendre au-delà de 100vh */
+    min-height: auto;
+}

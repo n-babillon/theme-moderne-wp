@@ -1,0 +1,99 @@
+/* ==========================================================================
+   GALLERY-SECTION PATTERN - Styles pour le pattern galerie
+   ========================================================================== */
+
+/* Container principal de la galerie */
+.gallery-grid {
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* Style pour les images de la galerie */
+.gallery-grid .wp-block-image {
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid .wp-block-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-grid .wp-block-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+    border-radius: 12px;
+}
+
+.gallery-grid .wp-block-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Liens des images */
+.gallery-grid .wp-block-image a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.gallery-grid .wp-block-image a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    border-radius: 12px;
+}
+
+.gallery-grid .wp-block-image:hover a::after {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Grille responsive */
+.gallery-grid.columns-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--wp--preset--spacing--medium);
+}
+
+/* Responsive pour tablettes */
+@media (max-width: 1024px) {
+    .gallery-grid.columns-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-grid .wp-block-image img {
+        height: 220px;
+    }
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+    .gallery-grid.columns-3 {
+        grid-template-columns: 1fr;
+        gap: var(--wp--preset--spacing--small);
+    }
+    
+    .gallery-grid .wp-block-image img {
+        height: 200px;
+    }
+    
+    .gallery-grid .wp-block-image {
+        border-radius: 8px;
+    }
+    
+    .gallery-grid .wp-block-image img,
+    .gallery-grid .wp-block-image a,
+    .gallery-grid .wp-block-image a::after {
+        border-radius: 8px;
+    }
+}

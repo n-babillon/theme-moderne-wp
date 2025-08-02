@@ -1,0 +1,61 @@
+/* ==========================================================================
+   WIDGETS WORDPRESS - Styles pour les widgets
+   ========================================================================== */
+
+.widget {
+    margin-bottom: var(--wp--preset--spacing--large);
+}
+
+.widget-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--wp--preset--spacing--medium);
+    padding-bottom: var(--wp--preset--spacing--small);
+    border-bottom: 2px solid var(--wp--preset--color--primary, #007acc);
+}
+
+.widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.widget li {
+    padding: var(--wp--preset--spacing--small) 0;
+    border-bottom: 1px solid #eee;
+}
+
+.widget li:last-child {
+    border-bottom: none;
+}
+
+.widget a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.widget a:hover {
+    color: var(--wp--preset--color--primary, #007acc);
+}
+
+/* Widget de recherche */
+.search-form {
+    display: flex;
+    gap: var(--wp--preset--spacing--small);
+}
+
+.search-field {
+    flex: 1;
+    padding: var(--wp--preset--spacing--small);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-submit {
+    padding: var(--wp--preset--spacing--small) var(--wp--preset--spacing--medium);
+    background: var(--wp--preset--color--primary, #007acc);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

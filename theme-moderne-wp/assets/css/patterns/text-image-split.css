@@ -1,0 +1,213 @@
+/* ==========================================================================
+   TEXT IMAGE SPLIT PATTERN
+   ========================================================================== */
+
+/* Pattern principal */
+.text-image-split {
+    min-height: 500px;
+    align-items: stretch;
+}
+
+.text-image-split .wp-block-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Colonne de texte */
+.text-image-split .wp-block-column:first-child {
+    /* background-color: var(--wp--preset--color--base); */
+    position: relative;
+    z-index: 2;
+}
+
+/* Colonne d'image */
+.text-image-split .wp-block-column:last-child {
+    position: relative;
+    overflow: hidden;
+}
+
+.text-image-split .wp-block-cover {
+    height: 100% !important;
+    min-height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.text-image-split .wp-block-cover__image-background {
+    object-fit: cover !important;
+    object-position: center !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* S'assurer que les colonnes ont la même hauteur */
+.text-image-split.wp-block-columns {
+    align-items: stretch;
+}
+
+.text-image-split .wp-block-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Effet de hover sur l'image */
+.text-image-split .wp-block-cover:hover .wp-block-cover__image-background {
+    transform: scale(1.05);
+    transition: transform 0.6s ease;
+}
+
+.text-image-split .wp-block-cover__image-background {
+    transition: transform 0.6s ease;
+}
+
+/* Responsive pour tablettes */
+@media (max-width: 1024px) {
+    .text-image-split {
+        min-height: 400px;
+    }
+    
+    .text-image-split .wp-block-column:first-child {
+        padding: var(--wp--preset--spacing--large) !important;
+    }
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+    .text-image-split {
+        flex-direction: column !important;
+        min-height: auto;
+    }
+    
+    .text-image-split .wp-block-column {
+        flex-basis: auto !important;
+        width: 100% !important;
+    }
+    
+    .text-image-split .wp-block-column:first-child {
+        padding: var(--wp--preset--spacing--medium) !important;
+        order: 2;
+    }
+    
+    .text-image-split .wp-block-column:last-child {
+        order: 1;
+        position: relative;
+        min-height: 300px;
+    }
+    
+    .text-image-split .wp-block-cover {
+        position: relative !important;
+        min-height: 300px !important;
+    }
+}
+
+/* Version inversée (image à gauche, texte à droite) */
+.text-image-split.reversed .wp-block-column:first-child {
+    order: 2;
+    position: relative;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.text-image-split.reversed .wp-block-column:last-child {
+    order: 1;
+}
+
+/* Pour la version inversée, appliquer les styles d'image à la première colonne */
+.text-image-split.reversed .wp-block-column:first-child .wp-block-cover {
+    height: 100% !important;
+    min-height: 100% !important;
+    width: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+
+.text-image-split.reversed .wp-block-column:first-child .wp-block-cover__image-background {
+    object-fit: cover !important;
+    object-position: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .text-image-split.reversed .wp-block-column:first-child {
+        order: 2;
+    }
+    
+    .text-image-split.reversed .wp-block-column:last-child {
+        order: 1;
+    }
+}
+
+/* Variante avec ombre */
+.text-image-split.with-shadow {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Variante avec overlay sur l'image */
+.text-image-split .wp-block-cover.with-overlay .wp-block-cover__background {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+    opacity: 1 !important;
+}
+
+/* Animation d'entrée */
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.text-image-split.animate-in .wp-block-column:first-child {
+    animation: slideInFromLeft 0.8s ease-out;
+}
+
+.text-image-split.animate-in .wp-block-column:last-child {
+    animation: slideInFromRight 0.8s ease-out;
+}
+
+/* Focus et accessibilité */
+.text-image-split .wp-block-button__link:focus {
+    outline: 2px solid var(--wp--preset--color--primary);
+    outline-offset: 2px;
+}
+
+/* Amélioration des contrastes */
+.text-image-split .wp-block-heading {
+    color: var(--wp--preset--color--contrast);
+}
+
+.text-image-split .wp-block-paragraph {
+    color: var(--wp--preset--color--contrast-2);
+}
+

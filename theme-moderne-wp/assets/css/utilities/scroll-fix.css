@@ -1,0 +1,130 @@
+/* ==========================================================================
+   CORRECTION SCROLL - Fix pour les problèmes de défilement
+   ========================================================================== */
+
+/* Assurer que le scroll fonctionne toujours */
+html {
+    overflow-x: hidden; /* Empêche le scroll horizontal seulement */
+    overflow-y: auto;   /* Permet le scroll vertical */
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden; /* Empêche le scroll horizontal seulement */
+    overflow-y: auto;   /* Permet le scroll vertical */
+    position: relative; /* Au lieu de fixed qui peut bloquer */
+}
+
+/* S'assurer que les containers WordPress n'bloquent pas le scroll */
+.wp-site-blocks,
+.wp-block-group,
+.wp-block-cover {
+    overflow-x: hidden;
+    /* NE PAS mettre overflow-y: hidden ici */
+}
+
+/* Container principal doit permettre le scroll */
+#page,
+.site-container,
+.wp-site-blocks {
+    min-height: 100vh;
+    /* NE PAS utiliser height: 100vh qui peut bloquer */
+    overflow-y: visible;
+}
+
+/* Header sticky ne doit pas bloquer le scroll */
+.wp-block-template-part[data-area="header"] {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* Pas de height fixe */
+}
+
+/* Main content doit pouvoir s'étendre */
+main,
+.site-main,
+.wp-block-group[style*="main"] {
+    flex: 1;
+    min-height: auto; /* Au lieu de 100vh */
+    overflow: visible;
+}
+
+/* Navigation mobile corrected */
+@media (max-width: 767px) {
+    /* S'assurer que la navigation mobile ne bloque pas le scroll du body */
+    body.nav-open {
+        overflow: hidden; /* Seulement quand le menu est ouvert */
+    }
+    
+    body:not(.nav-open) {
+        overflow-y: auto; /* Toujours permettre le scroll sinon */
+    }
+    
+    .main-navigation {
+        overflow-y: auto;
+        /* height: 100vh peut être problématique, utiliser max-height */
+        max-height: 100vh;
+        height: auto;
+    }
+}
+
+/* Debug pour tester le scroll */
+.debug-scroll-test {
+    height: 200vh;
+    background: linear-gradient(to bottom, #ff0000, #00ff00, #0000ff);
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Classes utilitaires pour forcer le scroll */
+.force-scroll {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+.disable-scroll {
+    overflow: hidden !important;
+}
+
+/* Correction pour les patterns qui pourraient bloquer */
+.text-image-split,
+.hero-section,
+.wp-block-cover {
+    overflow-x: hidden;
+    /* overflow-y doit rester auto ou visible */
+}
+
+/* S'assurer que les blocs ne créent pas de contexte de formatage qui bloque */
+.wp-block-group,
+.wp-block-columns,
+.wp-block-column {
+    /* Éviter contain: layout qui peut causer des problèmes de scroll */
+    contain: none;
+}
+
+/* Fix pour les images qui dépassent */
+img,
+.wp-block-image,
+.wp-block-cover__image-background {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Smooth scrolling mais qui fonctionne */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Si l'utilisateur préfère moins de mouvement */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
