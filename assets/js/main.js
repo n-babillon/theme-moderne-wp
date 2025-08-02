@@ -167,6 +167,82 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // =============================================================================
+    // COMPTEURS ANIMÉS
+    // =============================================================================
+    
+    function animateCounter(element, start, end, duration) {
+        const startTime = performance.now();
+        const range = end - start;
+        
+        function updateCounter(currentTime) {
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
+            
+            // Fonction d'easing out cubic
+            const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+            const currentValue = Math.round(start + (range * easeOutCubic));
+            
+            // Formater le nombre avec des espaces pour les milliers
+            const formattedValue = currentValue.toLocaleString('fr-FR');
+            element.textContent = formattedValue;
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.classList.remove('counting');
+            }
+        }
+        
+        element.classList.add('counting');
+        requestAnimationFrame(updateCounter);
+    }
+    
+    // Observer pour déclencher l'animation des compteurs
+    if ('IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counterSection = entry.target;
+                    const animationSpeed = parseInt(counterSection.getAttribute('data-animation-speed')) || 2000;
+                    
+                    // Animer chaque compteur individuellement
+                    const counters = counterSection.querySelectorAll('.counter-number');
+                    
+                    counters.forEach((counter, index) => {
+                        const start = parseInt(counter.getAttribute('data-start')) || 0;
+                        const end = parseInt(counter.getAttribute('data-end')) || 0;
+                        
+                        // Délai progressif pour un effet de cascade
+                        setTimeout(() => {
+                            animateCounter(counter, start, end, animationSpeed);
+                        }, index * 200);
+                    });
+                    
+                    // Animer l'apparition des items
+                    const counterItems = counterSection.querySelectorAll('.counter-item');
+                    counterItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate-in');
+                        }, index * 100);
+                    });
+                    
+                    // Ne déclencher qu'une seule fois
+                    counterObserver.unobserve(counterSection);
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        // Observer toutes les sections de compteurs
+        const counterSections = document.querySelectorAll('.counters-grid');
+        counterSections.forEach(section => {
+            counterObserver.observe(section);
+        });
+    }
+    
+    // =============================================================================
     // FORMULAIRES
     // =============================================================================
     

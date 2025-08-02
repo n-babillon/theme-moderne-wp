@@ -1,0 +1,328 @@
+/**
+ * Styles pour le bloc Section Compteurs
+ * Utilise les variables CSS du thème moderne
+ */
+
+/* Container principal du bloc */
+.counters-section-block {
+  width: 100%;
+  position: relative;
+}
+
+/* Grille des compteurs */
+.counters-grid {
+  display: grid;
+  gap: var(--spacing-8);
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  justify-items: center;
+}
+
+/* Configuration des colonnes */
+.counters-grid.columns-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.counters-grid.columns-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.counters-grid.columns-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Item de compteur */
+.counter-item {
+  background: var(--color-white);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-8);
+  text-align: center;
+  position: relative;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  border: var(--border-width-thin) solid var(--color-gray-100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  width: 100%;
+  max-width: 280px;
+  min-height: 200px;
+  justify-content: center;
+}
+
+/* Effets au survol */
+.counter-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Icône du compteur */
+.counter-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-full);
+  margin-bottom: var(--spacing-2);
+  transition: all var(--transition-base);
+}
+
+.counter-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke-width: 2;
+}
+
+/* Contenu du compteur */
+.counter-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+/* Wrapper du nombre */
+.counter-number-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--spacing-1);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Nombre principal */
+.counter-number {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  font-family: var(--font-family-heading);
+  transition: color var(--transition-base);
+}
+
+/* Suffixe du nombre */
+.counter-suffix {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  opacity: 0.8;
+}
+
+/* Étiquette du compteur */
+.counter-label {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-700);
+  margin: 0;
+  line-height: var(--line-height-normal);
+  text-align: center;
+}
+
+/* Schémas de couleurs */
+
+/* Couleur principale */
+.counters-grid.color-scheme-primary .counter-icon {
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+  color: var(--color-white);
+}
+
+.counters-grid.color-scheme-primary .counter-number {
+  color: var(--color-primary);
+}
+
+.counters-grid.color-scheme-primary .counter-item:hover .counter-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+}
+
+/* Couleur secondaire */
+.counters-grid.color-scheme-secondary .counter-icon {
+  background: linear-gradient(135deg, var(--color-secondary-light), var(--color-secondary));
+  color: var(--color-white);
+}
+
+.counters-grid.color-scheme-secondary .counter-number {
+  color: var(--color-secondary);
+}
+
+.counters-grid.color-scheme-secondary .counter-item:hover .counter-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+}
+
+/* Dégradé */
+.counters-grid.color-scheme-gradient .counter-icon {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-white);
+}
+
+.counters-grid.color-scheme-gradient .counter-number {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.counters-grid.color-scheme-gradient .counter-item:hover .counter-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Thème sombre */
+.counters-grid.color-scheme-dark .counter-item {
+  background: var(--color-gray-800);
+  border-color: var(--color-gray-700);
+}
+
+.counters-grid.color-scheme-dark .counter-icon {
+  background: linear-gradient(135deg, var(--color-gray-600), var(--color-gray-700));
+  color: var(--color-white);
+}
+
+.counters-grid.color-scheme-dark .counter-number {
+  color: var(--color-white);
+}
+
+.counters-grid.color-scheme-dark .counter-label {
+  color: var(--color-gray-300);
+}
+
+.counters-grid.color-scheme-dark .counter-item:hover {
+  background: var(--color-gray-700);
+}
+
+/* Animation d'apparition */
+.counter-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.counter-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation de comptage */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.counter-number.counting {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Responsive Design */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .counters-grid.columns-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+  }
+  
+  .counters-grid.columns-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .counter-item {
+    padding: var(--spacing-6);
+    min-height: 180px;
+  }
+  
+  .counter-number {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .counter-suffix {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+  .counters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-4);
+  }
+  
+  .counter-item {
+    padding: var(--spacing-5);
+    min-height: 160px;
+  }
+  
+  .counter-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .counter-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .counter-number {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .counter-suffix {
+    font-size: var(--font-size-lg);
+  }
+  
+  .counter-label {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+  .counters-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+  
+  .counter-item {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .counter-item {
+    transition: none;
+  }
+  
+  .counter-item:hover {
+    transform: none;
+  }
+  
+  .counter-icon {
+    transition: none;
+  }
+  
+  .counter-number.counting {
+    animation: none;
+  }
+}
+
+/* Focus states pour l'accessibilité */
+.counter-item:focus-within {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Placeholder pour l'éditeur */
+.counters-section-placeholder {
+  transition: all var(--transition-base);
+}
+
+.counters-section-placeholder:hover {
+  border-color: var(--color-primary);
+  background: var(--color-gray-50) !important;
+}

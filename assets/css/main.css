@@ -31,6 +31,7 @@
 @import 'blocks/testimonials.css';
 @import 'blocks/cta.css';
 @import 'blocks/gallery-section.css';
+@import 'blocks/counters-section.css';
 
 /* WordPress spécifique */
 @import 'wordpress/posts.css';

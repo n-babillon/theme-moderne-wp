@@ -45,3 +45,8 @@
     margin-bottom: var(--wp--preset--spacing--large);
     text-align: center;
 }
+
+/* Title post */
+.wp-block-post-title{
+    font-size: 2rem;
+}

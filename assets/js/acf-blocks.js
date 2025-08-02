@@ -42,6 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
             enhanceGalleryBlock(block);
         });
         
+        // Chercher tous les blocs ACF Section Compteurs
+        const counterBlocks = document.querySelectorAll('[data-type="acf/counters-section"]');
+        
+        counterBlocks.forEach(block => {
+            enhanceCounterBlock(block);
+        });
+        
         // Ajouter des styles pour l'éditeur
         addEditorStyles();
     }
@@ -62,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Ajouter un indicateur visuel
-    function addVisualIndicator(block) {
+    function addVisualIndicator(block, customText = '⚡ ACF Pro') {
         
         // Vérifier si l'indicateur n'existe pas déjà
         if (block.querySelector('.acf-block-indicator')) {
@@ -71,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const indicator = document.createElement('div');
         indicator.className = 'acf-block-indicator';
-        indicator.innerHTML = '⚡ ACF Pro';
+        indicator.innerHTML = customText;
         indicator.style.cssText = `
             position: absolute;
             top: -8px;
@@ -243,6 +250,65 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         
         document.head.appendChild(style);
+    }
+    
+    // Améliorer un bloc compteur spécifique
+    function enhanceCounterBlock(block) {
+        
+        // Ajouter une classe pour identifier les blocs améliorés
+        if (!block.classList.contains('acf-enhanced')) {
+            block.classList.add('acf-enhanced');
+            
+            // Ajouter un indicateur visuel
+            addVisualIndicator(block, '📊 Compteurs');
+            
+            // Observer les changements dans les champs ACF
+            observeACFChanges(block);
+            
+            // Prévisualisation en temps réel des compteurs
+            setupCounterPreview(block);
+        }
+    }
+    
+    // Configuration de la prévisualisation des compteurs
+    function setupCounterPreview(block) {
+        
+        // Observer les changements de configuration
+        const configFields = block.querySelectorAll('.acf-field[data-name*="counter"] input, .acf-field[data-name*="counter"] select');
+        
+        configFields.forEach(field => {
+            field.addEventListener('change', () => {
+                updateCounterPreview(block);
+            });
+        });
+        
+        // Mise à jour initiale
+        setTimeout(() => updateCounterPreview(block), 500);
+    }
+    
+    // Mise à jour de la prévisualisation des compteurs
+    function updateCounterPreview(block) {
+        
+        const previewArea = block.querySelector('.counters-grid');
+        if (!previewArea) return;
+        
+        // Ajouter un effet de mise à jour
+        previewArea.style.opacity = '0.7';
+        previewArea.style.transform = 'scale(0.98)';
+        
+        setTimeout(() => {
+            previewArea.style.opacity = '1';
+            previewArea.style.transform = 'scale(1)';
+            
+            // Effet de pulsation sur les chiffres
+            const numbers = previewArea.querySelectorAll('.counter-number');
+            numbers.forEach(number => {
+                number.style.animation = 'pulse 0.5s ease-in-out';
+                setTimeout(() => {
+                    number.style.animation = '';
+                }, 500);
+            });
+        }, 300);
     }
     
     // Ajouter des améliorations pour les tooltips

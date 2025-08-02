@@ -204,3 +204,9 @@
   .lg\\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
   .lg\\:grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
 }
+
+.is-layout-constrained > :where(.wp-block-post-title){
+  max-width:1400px;
+  border-bottom: 1px solid var( --color-primary);
+  padding-bottom: var(--spacing-4);
+}
