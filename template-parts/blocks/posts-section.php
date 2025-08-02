@@ -147,12 +147,7 @@ function format_french_date($date) {
                                     'loading' => 'lazy',
                                     'alt' => get_the_title()
                                 )); ?>
-                                
-                                <?php if ($posts_style === 'overlay'): ?>
-                                    <div class="post-card-overlay">
-                                        <span class="read-more-text">Lire l'article</span>
-                                    </div>
-                                <?php endif; ?>
+                            
                             </a>
                         </div>
                     <?php endif; ?>
