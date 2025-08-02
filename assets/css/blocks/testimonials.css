@@ -1,0 +1,23 @@
+/* ==========================================================================
+   TÉMOIGNAGES - Styles pour les blocs de témoignages
+   ========================================================================== */
+
+.testimonial-block {
+    background: white;
+    padding: var(--wp--preset--spacing--large);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: var(--wp--preset--spacing--medium) 0;
+}
+
+.testimonial-content {
+    font-style: italic;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: var(--wp--preset--spacing--medium);
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--wp--preset--color--primary, #007acc);
+}

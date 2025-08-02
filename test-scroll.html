@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Scroll - Thème Moderne</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        /* Test du scroll avec du contenu long */
+        .test-content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            min-height: 500px;
+            padding: 40px 20px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .section:nth-child(odd) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            z-index: 1000;
+        }
+        
+        .debug-info {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        Scroll Y: <span id="scrollY">0</span>px
+    </div>
+    
+    <div class="debug-info">
+        <div>Body overflow-y: <span id="bodyOverflow"></span></div>
+        <div>HTML overflow-y: <span id="htmlOverflow"></span></div>
+        <div>Body height: <span id="bodyHeight"></span>px</div>
+        <div>Document height: <span id="documentHeight"></span>px</div>
+    </div>
+
+    <div class="test-content">
+        <h1>🔧 Test de Scroll - Thème Moderne</h1>
+        <p><strong>Objectif :</strong> Vérifier que le défilement fonctionne correctement sur toutes les pages.</p>
+        
+        <div class="section">
+            <h2>Section 1 - Header</h2>
+            <p>Cette page contient plusieurs sections hautes pour tester le scroll vertical. Si vous pouvez faire défiler cette page de haut en bas, le problème de scroll est résolu !</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Section 2 - Contenu</h2>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Section 3 - Plus de contenu</h2>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Section 4 - Test responsive</h2>
+            <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Section 5 - Footer test</h2>
+            <p>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+            <p><strong>Si vous voyez cette section, le scroll fonctionne parfaitement ! 🎉</strong></p>
+        </div>
+    </div>
+
+    <script>
+        // Debug scroll en temps réel
+        function updateScrollInfo() {
+            document.getElementById('scrollY').textContent = window.scrollY;
+            document.getElementById('bodyOverflow').textContent = getComputedStyle(document.body).overflowY;
+            document.getElementById('htmlOverflow').textContent = getComputedStyle(document.documentElement).overflowY;
+            document.getElementById('bodyHeight').textContent = document.body.scrollHeight;
+            document.getElementById('documentHeight').textContent = document.documentElement.scrollHeight;
+        }
+        
+        window.addEventListener('scroll', updateScrollInfo);
+        updateScrollInfo(); // Initial call
+        
+        // Test de scroll programmatique
+        setTimeout(() => {
+            console.log('🔧 Test de scroll automatique...');
+            window.scrollTo({
+                top: 500,
+                behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 2000);
+        }, 1000);
+    </script>
+</body>
+</html>

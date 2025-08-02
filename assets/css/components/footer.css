@@ -1,0 +1,189 @@
+/* ==========================================================================
+   FOOTER STYLES - Styles pour wp-block-template-part
+   ========================================================================== */
+
+/* Override de la classe WordPress par défaut pour le footer */
+.wp-block-template-part[data-area="footer"] {
+    margin: 0 auto;
+    padding: 0;
+    background-color: var(--wp--preset--color--contrast);
+    color: var(--wp--preset--color--base);
+    margin-top: auto;
+
+}
+
+/* Section du footer */
+.wp-block-template-part[data-area="footer"] .wp-block-group {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+/* Grille du footer */
+/* .wp-block-template-part[data-area="footer"] .wp-block-columns {
+    gap: var(--wp--preset--spacing--large);
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--wp--preset--spacing--medium);
+} */
+
+/* Titres des sections */
+/* .wp-block-template-part[data-area="footer"] .wp-block-heading {
+    font-size: var(--wp--preset--font-size--large);
+    font-weight: var(--wp--custom--font-weight--bold);
+    color: var(--wp--preset--color--base);
+    margin-bottom: var(--wp--preset--spacing--small);
+    border-bottom: 2px solid var(--wp--preset--color--primary);
+    padding-bottom: var(--wp--preset--spacing--small);
+    display: inline-block;
+} */
+
+/* Paragraphes dans le footer */
+/* .wp-block-template-part[data-area="footer"] .wp-block-paragraph {
+    color: var(--wp--preset--color--base);
+    line-height: 1.6;
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-paragraph a {
+    color: var(--wp--preset--color--base);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-paragraph a:hover,
+.wp-block-template-part[data-area="footer"] .wp-block-paragraph a:focus {
+    color: var(--wp--preset--color--primary);
+    border-bottom-color: var(--wp--preset--color--primary);
+} */
+
+/* Listes dans le footer */
+/* .wp-block-template-part[data-area="footer"] .wp-block-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-list li {
+    margin-bottom: var(--wp--preset--spacing--small);
+    padding-left: var(--wp--preset--spacing--small);
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-list li:hover {
+    border-left-color: var(--wp--preset--color--primary);
+    transform: translateX(5px);
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-list a {
+    color: var(--wp--preset--color--base);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-list a:hover {
+    color: var(--wp--preset--color--primary);
+} */
+
+/* Réseaux sociaux */
+/* .wp-block-template-part[data-area="footer"] .wp-block-social-links {
+    gap: var(--wp--preset--spacing--small);
+    justify-content: flex-start;
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-social-link {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-social-link:hover {
+    background-color: var(--wp--preset--color--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+} */
+
+/* Section de copyright */
+/* .wp-block-template-part[data-area="footer"] .footer-bottom {
+    padding: var(--wp--preset--spacing--medium) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: var(--wp--preset--spacing--large);
+    text-align: center;
+}
+
+.wp-block-template-part[data-area="footer"] .footer-bottom .wp-block-paragraph {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--wp--preset--font-size--small);
+} */
+
+/* Responsive */
+/* @media (max-width: 768px) {
+    .wp-block-template-part[data-area="footer"] .wp-block-group {
+        padding: var(--wp--preset--spacing--large) var(--wp--preset--spacing--medium);
+    }
+    
+    .wp-block-template-part[data-area="footer"] .wp-block-columns {
+        flex-direction: column;
+        gap: var(--wp--preset--spacing--medium);
+    }
+    
+    .wp-block-template-part[data-area="footer"] .wp-block-social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .wp-block-template-part[data-area="footer"] .wp-block-group {
+        padding: var(--wp--preset--spacing--medium) var(--wp--preset--spacing--small);
+    }
+} */
+
+/* Classe personnalisée pour remplacer wp-block-template-part */
+/* .custom-footer {
+    background-color: var(--wp--preset--color--contrast);
+    color: var(--wp--preset--color--base);
+    margin-top: auto;
+}
+
+.custom-footer .wp-block-group {
+    padding: var(--wp--preset--spacing--x-large) var(--wp--preset--spacing--large) var(--wp--preset--spacing--large);
+}
+
+/* Animation d'entrée */
+/* @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-column {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.wp-block-template-part[data-area="footer"] .wp-block-column:nth-child(1) { animation-delay: 0.1s; }
+.wp-block-template-part[data-area="footer"] .wp-block-column:nth-child(2) { animation-delay: 0.2s; }
+.wp-block-template-part[data-area="footer"] .wp-block-column:nth-child(3) { animation-delay: 0.3s; }
+.wp-block-template-part[data-area="footer"] .wp-block-column:nth-child(4) { animation-delay: 0.4s; }
+
+
+@media screen and (min-width: 1440px) {
+    .template-footer:has(.wp-block-group) {
+        > :first-child {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (min-width: 782px) {
+    .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column {
+        flex: initial;
+    }
+}  */

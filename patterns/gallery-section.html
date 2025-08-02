@@ -1,0 +1,84 @@
+<!--
+ * Title: Section Galerie
+ * Slug: theme-moderne/gallery-section
+ * Description: Un titre suivi d'une galerie d'images en grille responsive
+ * Categories: theme-moderne
+ * Keywords: galerie, images, grid, portfolio
+ * Viewport Width: 1200
+-->
+
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|x-large","bottom":"var:preset|spacing|x-large","left":"var:preset|spacing|medium","right":"var:preset|spacing|medium"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"base","layout":{"type":"constrained","contentSize":"1200px"}} -->
+<div class="wp-block-group has-base-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--x-large);padding-right:var(--wp--preset--spacing--medium);padding-bottom:var(--wp--preset--spacing--x-large);padding-left:var(--wp--preset--spacing--medium)">
+    <!-- wp:heading {"textAlign":"center","level":2,"style":{"typography":{"fontSize":"2.5rem","fontWeight":"700","lineHeight":"1.2"},"spacing":{"margin":{"bottom":"var:preset|spacing|large"}}},"textColor":"contrast"} -->
+    <h2 class="wp-block-heading has-text-align-center has-contrast-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--large);font-size:2.5rem;font-weight:700;line-height:1.2">Notre Galerie</h2>
+    <!-- /wp:heading -->
+
+    <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.125rem","lineHeight":"1.6"},"spacing":{"margin":{"bottom":"var:preset|spacing|x-large"}}},"textColor":"contrast-2"} -->
+    <p class="has-text-align-center has-contrast-2-color has-text-color" style="margin-bottom:var(--wp--preset--spacing--x-large);font-size:1.125rem;line-height:1.6">Découvrez notre collection d'images et de moments capturés</p>
+    <!-- /wp:paragraph -->
+
+    <!-- wp:gallery {"columns":3,"linkTo":"media","sizeSlug":"large","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|medium","left":"var:preset|spacing|medium"}}},"className":"gallery-grid"} -->
+    <figure class="wp-block-gallery has-nested-images columns-3 is-cropped gallery-grid">
+        <!-- wp:image {"sizeSlug":"large","linkDestination":"media"} -->
+        <figure class="wp-block-image size-large">
+            <a href="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Paysage montagneux au coucher du soleil"/>
+            </a>
+        </figure>
+        <!-- /wp:image -->
+
+        <!-- wp:image {"sizeSlug":"large","linkDestination":"media"} -->
+        <figure class="wp-block-image size-large">
+            <a href="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Forêt dense avec rayons de soleil"/>
+            </a>
+        </figure>
+        <!-- /wp:image -->
+
+        <!-- wp:image {"sizeSlug":"large","linkDestination":"media"} -->
+        <figure class="wp-block-image size-large">
+            <a href="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Lac de montagne avec reflets"/>
+            </a>
+        </figure>
+        <!-- /wp:image -->
+
+        <!-- wp:image {"sizeSlug":"large","linkDestination":"media"} -->
+        <figure class="wp-block-image size-large">
+            <a href="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Champ de lavande en Provence"/>
+            </a>
+        </figure>
+        <!-- /wp:image -->
+
+        <!-- wp:image {"sizeSlug":"large","linkDestination":"media"} -->
+        <figure class="wp-block-image size-large">
+            <a href="https://images.unsplash.com/photo-1473800447596-01729482b8eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+                <img src="https://images.unsplash.com/photo-1473800447596-01729482b8eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Plage tropicale avec palmiers"/>
+            </a>
+        </figure>
+        <!-- /wp:image -->
+
+        <!-- wp:image {"sizeSlug":"large","linkDestination":"media"} -->
+        <figure class="wp-block-image size-large">
+            <a href="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80">
+                <img src="https://images.unsplash.com/photo-1516571137365-d19ab2351aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ville moderne la nuit"/>
+            </a>
+        </figure>
+        <!-- /wp:image -->
+    </figure>
+    <!-- /wp:gallery -->
+
+    <!-- wp:spacer {"height":"var:preset|spacing|medium"} -->
+    <div style="height:var(--wp--preset--spacing--medium)" aria-hidden="true" class="wp-block-spacer"></div>
+    <!-- /wp:spacer -->
+
+    <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+    <div class="wp-block-buttons">
+        <!-- wp:button {"backgroundColor":"primary","textColor":"base","style":{"border":{"radius":"8px"},"typography":{"fontWeight":"600"},"spacing":{"padding":{"left":"var:preset|spacing|large","right":"var:preset|spacing|large","top":"var:preset|spacing|medium","bottom":"var:preset|spacing|medium"}}}} -->
+        <div class="wp-block-button"><a class="wp-block-button__link has-base-color has-primary-background-color has-text-color has-background wp-element-button" style="border-radius:8px;padding-top:var(--wp--preset--spacing--medium);padding-right:var(--wp--preset--spacing--large);padding-bottom:var(--wp--preset--spacing--medium);padding-left:var(--wp--preset--spacing--large);font-weight:600">Voir toute la galerie</a></div>
+        <!-- /wp:button -->
+    </div>
+    <!-- /wp:buttons -->
+</div>
+<!-- /wp:group -->

@@ -1,0 +1,59 @@
+/* ==========================================================================
+   FORMULAIRES - Styles pour les formulaires
+   ========================================================================== */
+
+/* Styles de base pour les formulaires */
+.wp-block-form {
+    margin: var(--wp--preset--spacing--medium) 0;
+}
+
+/* Champs de formulaire */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: var(--wp--preset--spacing--small);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--wp--preset--color--primary, #007acc);
+    box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.2);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Boutons de formulaire */
+input[type="submit"],
+button[type="submit"] {
+    background: var(--wp--preset--color--primary, #007acc);
+    color: white;
+    border: none;
+    padding: var(--wp--preset--spacing--small) var(--wp--preset--spacing--medium);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background: var(--wp--preset--color--secondary, #005a8b);
+}

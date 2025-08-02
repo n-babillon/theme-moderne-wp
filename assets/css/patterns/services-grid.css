@@ -1,0 +1,340 @@
+/* ==========================================================================
+   SERVICES GRID PATTERN
+   ========================================================================== */
+
+/* Section services principale */
+.services-section {
+    padding: var(--wp--preset--spacing--x-large) 0;
+    background-color: var(--wp--preset--color--base);
+    position: relative;
+}
+
+.services-container {
+    max-width: var(--wp--style--global--content-size);
+    margin: 0 auto;
+    padding: 0 var(--wp--preset--spacing--medium);
+}
+
+/* En-tête de la section services */
+.services-header {
+    text-align: center;
+    margin-bottom: var(--wp--preset--spacing--x-large);
+}
+
+.services-title {
+    font-size: var(--wp--preset--font-size--xx-large);
+    font-weight: var(--wp--custom--font-weight--bold);
+    color: var(--wp--preset--color--contrast);
+    margin-bottom: var(--wp--preset--spacing--medium);
+    line-height: var(--wp--custom--line-height--heading);
+}
+
+.services-subtitle {
+    font-size: var(--wp--preset--font-size--large);
+    color: var(--wp--preset--color--contrast-2);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: var(--wp--custom--line-height--body);
+}
+
+/* Grille des services */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--wp--preset--spacing--large);
+    margin-bottom: var(--wp--preset--spacing--x-large);
+}
+
+/* Carte de service */
+.service-card {
+    background-color: var(--wp--preset--color--base);
+    border: 1px solid var(--wp--preset--color--neutral);
+    border-radius: 12px;
+    padding: var(--wp--preset--spacing--large);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-color: var(--wp--preset--color--primary);
+}
+
+/* Icône du service */
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--wp--preset--spacing--medium);
+    background: linear-gradient(135deg, var(--wp--preset--color--primary), var(--wp--preset--color--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wp--preset--color--base);
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+/* Contenu du service */
+.service-title {
+    font-size: var(--wp--preset--font-size--large);
+    font-weight: var(--wp--custom--font-weight--bold);
+    color: var(--wp--preset--color--contrast);
+    margin-bottom: var(--wp--preset--spacing--small);
+    line-height: var(--wp--custom--line-height--heading);
+}
+
+.service-description {
+    color: var(--wp--preset--color--contrast-2);
+    line-height: var(--wp--custom--line-height--body);
+    margin-bottom: var(--wp--preset--spacing--medium);
+}
+
+.service-features {
+    list-style: none;
+    margin: 0 0 var(--wp--preset--spacing--medium) 0;
+    padding: 0;
+}
+
+.service-features li {
+    color: var(--wp--preset--color--contrast-2);
+    padding: var(--wp--preset--spacing--x-small) 0;
+    position: relative;
+    padding-left: var(--wp--preset--spacing--medium);
+}
+
+.service-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--wp--preset--color--primary);
+    font-weight: bold;
+}
+
+/* Prix du service */
+.service-price {
+    font-size: var(--wp--preset--font-size--large);
+    font-weight: var(--wp--custom--font-weight--bold);
+    color: var(--wp--preset--color--primary);
+    margin-bottom: var(--wp--preset--spacing--medium);
+}
+
+.service-price-currency {
+    font-size: var(--wp--preset--font-size--small);
+    color: var(--wp--preset--color--contrast-2);
+}
+
+/* Bouton de service */
+.service-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--wp--preset--spacing--small);
+    padding: var(--wp--preset--spacing--small) var(--wp--preset--spacing--medium);
+    background-color: transparent;
+    color: var(--wp--preset--color--primary);
+    border: 2px solid var(--wp--preset--color--primary);
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: var(--wp--custom--font-weight--medium);
+    transition: all 0.3s ease;
+}
+
+.service-button:hover {
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--base);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Service featured/populaire */
+.service-card.featured {
+    border-color: var(--wp--preset--color--primary);
+    border-width: 2px;
+    position: relative;
+    transform: scale(1.05);
+}
+
+.service-card.featured::after {
+    content: 'Populaire';
+    position: absolute;
+    top: var(--wp--preset--spacing--small);
+    right: var(--wp--preset--spacing--small);
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--base);
+    padding: var(--wp--preset--spacing--x-small) var(--wp--preset--spacing--small);
+    border-radius: 4px;
+    font-size: var(--wp--preset--font-size--x-small);
+    font-weight: var(--wp--custom--font-weight--bold);
+    text-transform: uppercase;
+}
+
+.service-card.featured .service-button {
+    background-color: var(--wp--preset--color--primary);
+    color: var(--wp--preset--color--base);
+}
+
+.service-card.featured .service-button:hover {
+    background-color: var(--wp--preset--color--secondary);
+}
+
+/* Services en liste compacte */
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--wp--preset--spacing--medium);
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: var(--wp--preset--spacing--medium);
+    padding: var(--wp--preset--spacing--medium);
+    background-color: var(--wp--preset--color--neutral);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    background-color: var(--wp--preset--color--base);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service-item .service-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.service-item .service-content {
+    flex: 1;
+}
+
+.service-item .service-title {
+    font-size: var(--wp--preset--font-size--medium);
+    margin-bottom: var(--wp--preset--spacing--x-small);
+}
+
+.service-item .service-description {
+    font-size: var(--wp--preset--font-size--small);
+    margin: 0;
+}
+
+/* Call-to-action des services */
+.services-cta {
+    text-align: center;
+    padding: var(--wp--preset--spacing--large);
+    background: linear-gradient(135deg, var(--wp--preset--color--primary), var(--wp--preset--color--secondary));
+    border-radius: 12px;
+    color: var(--wp--preset--color--base);
+}
+
+.services-cta-title {
+    font-size: var(--wp--preset--font-size--large);
+    font-weight: var(--wp--custom--font-weight--bold);
+    margin-bottom: var(--wp--preset--spacing--small);
+}
+
+.services-cta-text {
+    margin-bottom: var(--wp--preset--spacing--medium);
+    opacity: 0.9;
+}
+
+.services-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--wp--preset--spacing--small);
+    padding: var(--wp--preset--spacing--medium) var(--wp--preset--spacing--large);
+    background-color: var(--wp--preset--color--base);
+    color: var(--wp--preset--color--primary);
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: var(--wp--custom--font-weight--medium);
+    transition: all 0.3s ease;
+}
+
+.services-cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--wp--preset--spacing--medium);
+    }
+    
+    .service-card.featured {
+        transform: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-section {
+        padding: var(--wp--preset--spacing--large) 0;
+    }
+    
+    .services-container {
+        padding: 0 var(--wp--preset--spacing--small);
+    }
+    
+    .services-grid,
+    .services-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+        padding: var(--wp--preset--spacing--medium);
+    }
+    
+    .services-title {
+        font-size: var(--wp--preset--font-size--x-large);
+    }
+    
+    .service-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .services-cta {
+        padding: var(--wp--preset--spacing--medium);
+    }
+    
+    .services-cta-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
