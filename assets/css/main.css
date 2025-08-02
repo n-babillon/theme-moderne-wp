@@ -32,6 +32,8 @@
 @import 'blocks/cta.css';
 @import 'blocks/gallery-section.css';
 @import 'blocks/counters-section.css';
+@import 'blocks/posts-section.css';
+@import 'blocks/custom-block-styles.css';
 
 /* WordPress spécifique */
 @import 'wordpress/posts.css';

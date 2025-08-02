@@ -209,6 +209,8 @@ $inline_styles = implode('', $styles);
         <div 
             id="<?php echo esc_attr($gallery_id); ?>"
             class="<?php echo esc_attr(implode(' ', $gallery_classes)); ?>"
+            data-gallery-id="<?php echo esc_attr($gallery_id); ?>"
+            data-is-preview="<?php echo $is_preview ? 'true' : 'false'; ?>"
             <?php foreach ($data_attributes as $attr => $value): ?>
                 <?php echo esc_attr($attr); ?>="<?php echo esc_attr($value); ?>"
             <?php endforeach; ?>
@@ -246,31 +248,3 @@ $inline_styles = implode('', $styles);
     </div>
 </div>
 
-<?php if ($is_preview): ?>
-<!-- Indicateur preview pour l'éditeur -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const wrapper = document.getElementById('<?php echo esc_js($gallery_id . '-wrapper'); ?>');
-    if (wrapper && !wrapper.querySelector('.preview-badge')) {
-        const badge = document.createElement('div');
-        badge.className = 'preview-badge';
-        badge.innerHTML = '👁️ Aperçu temps réel';
-        badge.style.cssText = `
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(0, 122, 204, 0.9);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-            z-index: 10;
-            pointer-events: none;
-        `;
-        wrapper.style.position = 'relative';
-        wrapper.appendChild(badge);
-    }
-});
-</script>
-<?php endif; ?>

@@ -49,6 +49,13 @@ document.addEventListener('DOMContentLoaded', function() {
             enhanceCounterBlock(block);
         });
         
+        // Chercher tous les blocs ACF Section Articles
+        const postsBlocks = document.querySelectorAll('[data-type="acf/posts-section"]');
+        
+        postsBlocks.forEach(block => {
+            enhancePostsBlock(block);
+        });
+        
         // Ajouter des styles pour l'éditeur
         addEditorStyles();
     }
@@ -307,6 +314,67 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     number.style.animation = '';
                 }, 500);
+            });
+        }, 300);
+    }
+    
+    // Améliorer un bloc articles spécifique
+    function enhancePostsBlock(block) {
+        
+        // Ajouter une classe pour identifier les blocs améliorés
+        if (!block.classList.contains('acf-enhanced')) {
+            block.classList.add('acf-enhanced');
+            
+            // Ajouter un indicateur visuel
+            addVisualIndicator(block, '📝 Articles');
+            
+            // Observer les changements dans les champs ACF
+            observeACFChanges(block);
+            
+            // Prévisualisation en temps réel des articles
+            setupPostsPreview(block);
+        }
+    }
+    
+    // Configuration de la prévisualisation des articles
+    function setupPostsPreview(block) {
+        
+        // Observer les changements de configuration
+        const configFields = block.querySelectorAll('.acf-field[data-name*="posts"] input, .acf-field[data-name*="posts"] select');
+        
+        configFields.forEach(field => {
+            field.addEventListener('change', () => {
+                updatePostsPreview(block);
+            });
+        });
+        
+        // Mise à jour initiale
+        setTimeout(() => updatePostsPreview(block), 500);
+    }
+    
+    // Mise à jour de la prévisualisation des articles
+    function updatePostsPreview(block) {
+        
+        const previewArea = block.querySelector('.posts-grid');
+        if (!previewArea) return;
+        
+        // Ajouter un effet de mise à jour
+        previewArea.style.opacity = '0.7';
+        previewArea.style.transform = 'scale(0.98)';
+        
+        setTimeout(() => {
+            previewArea.style.opacity = '1';
+            previewArea.style.transform = 'scale(1)';
+            
+            // Effet de mise en évidence sur les cartes
+            const cards = previewArea.querySelectorAll('.post-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.boxShadow = '0 4px 20px rgba(0, 122, 204, 0.3)';
+                    setTimeout(() => {
+                        card.style.boxShadow = '';
+                    }, 500);
+                }, index * 100);
             });
         }, 300);
     }

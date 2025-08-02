@@ -21,15 +21,14 @@
     position: relative;
 }
 
-.main-navigation a {
+.main-navigation a.wp-block-navigation-item__content {
     text-decoration: none;
     color: inherit;
-    padding: var(--wp--preset--spacing--small);
     transition: color 0.3s ease;
 }
 
-.main-navigation a:hover {
-    color: var(--wp--preset--color--primary, #007acc);
+.main-navigation a.wp-block-navigation-item__content:hover {
+    color: var(--color-primary-dark);
 }
 
 /* Menu mobile */

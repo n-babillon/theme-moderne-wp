@@ -108,6 +108,42 @@ function theme_moderne_register_counters_block() {
 add_action('acf/init', 'theme_moderne_register_counters_block');
 
 /**
+ * Enregistrer le bloc ACF pour la Section Articles
+ */
+function theme_moderne_register_posts_section_block() {
+    if (!function_exists('acf_register_block_type')) {
+        return;
+    }
+
+    acf_register_block_type(array(
+        'name'              => 'posts-section',
+        'title'             => __('Section Articles'),
+        'description'       => __('Une section qui affiche les articles dans des cartes personnalisables.'),
+        'render_template'   => get_template_directory() . '/template-parts/blocks/posts-section.php',
+        'category'          => 'design',
+        'icon'              => 'admin-post',
+        'keywords'          => array('articles', 'posts', 'blog', 'cartes', 'actualités'),
+        'mode'              => 'preview',
+        'supports'          => array(
+            'align'         => array('wide', 'full'),
+            'anchor'        => true,
+            'customClassName' => true,
+        ),
+        'example'           => array(
+            'attributes' => array(
+                'mode' => 'preview',
+                'data' => array(
+                    'section_title' => 'Nos Derniers Articles',
+                    'posts_count' => 6,
+                    'display_style' => 'grid'
+                )
+            )
+        )
+    ));
+}
+add_action('acf/init', 'theme_moderne_register_posts_section_block');
+
+/**
  * Champs ACF pour le bloc Section Galerie
  */
 function theme_moderne_register_gallery_section_fields() {
@@ -481,3 +517,233 @@ function theme_moderne_register_counters_fields() {
     ));
 }
 add_action('acf/init', 'theme_moderne_register_counters_fields');
+
+/**
+ * Champs ACF pour le bloc Section Articles
+ */
+function theme_moderne_register_posts_section_fields() {
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group(array(
+        'key' => 'group_posts_section',
+        'title' => 'Section Articles - Réglages',
+        'fields' => array(
+            array(
+                'key' => 'field_posts_section_title',
+                'label' => 'Titre de la section',
+                'name' => 'section_title',
+                'type' => 'text',
+                'instructions' => 'Titre principal de la section articles',
+                'required' => 0,
+                'default_value' => 'Nos Derniers Articles',
+                'wrapper' => array(
+                    'width' => '50',
+                ),
+            ),
+            array(
+                'key' => 'field_posts_section_description',
+                'label' => 'Description',
+                'name' => 'section_description',
+                'type' => 'textarea',
+                'instructions' => 'Description sous le titre',
+                'required' => 0,
+                'default_value' => 'Découvrez nos dernières actualités et articles de blog',
+                'rows' => 3,
+                'wrapper' => array(
+                    'width' => '50',
+                ),
+            ),
+            array(
+                'key' => 'field_posts_count',
+                'label' => 'Nombre d\'articles',
+                'name' => 'posts_count',
+                'type' => 'number',
+                'instructions' => 'Combien d\'articles afficher',
+                'required' => 1,
+                'default_value' => 6,
+                'min' => 1,
+                'max' => 12,
+                'wrapper' => array(
+                    'width' => '25',
+                ),
+            ),
+            array(
+                'key' => 'field_posts_columns',
+                'label' => 'Colonnes',
+                'name' => 'posts_columns',
+                'type' => 'select',
+                'instructions' => 'Nombre de colonnes pour l\'affichage',
+                'required' => 1,
+                'choices' => array(
+                    '2' => '2 colonnes',
+                    '3' => '3 colonnes',
+                    '4' => '4 colonnes',
+                ),
+                'default_value' => '3',
+                'wrapper' => array(
+                    'width' => '25',
+                ),
+            ),
+            array(
+                'key' => 'field_posts_category',
+                'label' => 'Catégorie',
+                'name' => 'posts_category',
+                'type' => 'taxonomy',
+                'instructions' => 'Filtrer par catégorie (optionnel)',
+                'required' => 0,
+                'taxonomy' => 'category',
+                'field_type' => 'select',
+                'allow_null' => 1,
+                'add_term' => 0,
+                'wrapper' => array(
+                    'width' => '25',
+                ),
+            ),
+            array(
+                'key' => 'field_posts_order',
+                'label' => 'Ordre d\'affichage',
+                'name' => 'posts_order',
+                'type' => 'select',
+                'instructions' => 'Comment trier les articles',
+                'required' => 1,
+                'choices' => array(
+                    'date_desc' => 'Plus récents d\'abord',
+                    'date_asc' => 'Plus anciens d\'abord',
+                    'title_asc' => 'Alphabétique A-Z',
+                    'title_desc' => 'Alphabétique Z-A',
+                    'comment_count' => 'Plus commentés',
+                    'rand' => 'Aléatoire',
+                ),
+                'default_value' => 'date_desc',
+                'wrapper' => array(
+                    'width' => '25',
+                ),
+            ),
+            array(
+                'key' => 'field_posts_style',
+                'label' => 'Style des cartes',
+                'name' => 'posts_style',
+                'type' => 'radio',
+                'instructions' => 'Apparence des cartes d\'articles',
+                'required' => 1,
+                'choices' => array(
+                    'classic' => 'Classique',
+                    'modern' => 'Moderne',
+                    'minimal' => 'Minimaliste',
+                    'overlay' => 'Overlay',
+                ),
+                'default_value' => 'modern',
+                'layout' => 'horizontal',
+                'wrapper' => array(
+                    'width' => '50',
+                ),
+            ),
+            array(
+                'key' => 'field_show_excerpt',
+                'label' => 'Afficher l\'extrait',
+                'name' => 'show_excerpt',
+                'type' => 'true_false',
+                'instructions' => 'Afficher un extrait de l\'article',
+                'required' => 0,
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => array(
+                    'width' => '25',
+                ),
+            ),
+            array(
+                'key' => 'field_show_author',
+                'label' => 'Afficher l\'auteur',
+                'name' => 'show_author',
+                'type' => 'true_false',
+                'instructions' => 'Afficher le nom de l\'auteur',
+                'required' => 0,
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => array(
+                    'width' => '25',
+                ),
+            ),
+            array(
+                'key' => 'field_show_date',
+                'label' => 'Afficher la date',
+                'name' => 'show_date',
+                'type' => 'true_false',
+                'instructions' => 'Afficher la date de publication',
+                'required' => 0,
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => array(
+                    'width' => '25',
+                ),
+            ),
+            array(
+                'key' => 'field_show_category',
+                'label' => 'Afficher la catégorie',
+                'name' => 'show_category',
+                'type' => 'true_false',
+                'instructions' => 'Afficher la catégorie principale',
+                'required' => 0,
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => array(
+                    'width' => '25',
+                ),
+            ),
+            array(
+                'key' => 'field_show_cta_button',
+                'label' => 'Bouton "Voir plus"',
+                'name' => 'show_cta_button',
+                'type' => 'true_false',
+                'instructions' => 'Afficher un bouton pour voir tous les articles',
+                'required' => 0,
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => array(
+                    'width' => '50',
+                ),
+            ),
+            array(
+                'key' => 'field_cta_button_text',
+                'label' => 'Texte du bouton',
+                'name' => 'cta_button_text',
+                'type' => 'text',
+                'instructions' => 'Texte du bouton "Voir plus"',
+                'required' => 0,
+                'default_value' => 'Voir tous les articles',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_show_cta_button',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
+                'wrapper' => array(
+                    'width' => '50',
+                ),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'block',
+                    'operator' => '==',
+                    'value' => 'acf/posts-section',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => 'Réglages pour la section articles personnalisée',
+    ));
+}
+add_action('acf/init', 'theme_moderne_register_posts_section_fields');

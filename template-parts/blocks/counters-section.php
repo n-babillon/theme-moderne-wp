@@ -93,6 +93,8 @@ $data_attributes = array(
         <div 
             id="<?php echo esc_attr($section_id); ?>"
             class="<?php echo esc_attr(implode(' ', $grid_classes)); ?>"
+            data-section-id="<?php echo esc_attr($section_id); ?>"
+            data-is-preview="<?php echo $is_preview ? 'true' : 'false'; ?>"
             <?php foreach ($data_attributes as $attr => $value): ?>
                 <?php echo esc_attr($attr); ?>="<?php echo esc_attr($value); ?>"
             <?php endforeach; ?>
@@ -122,31 +124,3 @@ $data_attributes = array(
     </div>
 </div>
 
-<?php if ($is_preview): ?>
-<!-- Indicateur preview pour l'éditeur -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const wrapper = document.getElementById('<?php echo esc_js($section_id . '-wrapper'); ?>');
-    if (wrapper && !wrapper.querySelector('.preview-badge')) {
-        const badge = document.createElement('div');
-        badge.className = 'preview-badge';
-        badge.innerHTML = '📊 Aperçu compteurs';
-        badge.style.cssText = `
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(0, 122, 204, 0.9);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-            z-index: 10;
-            pointer-events: none;
-        `;
-        wrapper.style.position = 'relative';
-        wrapper.appendChild(badge);
-    }
-});
-</script>
-<?php endif; ?>

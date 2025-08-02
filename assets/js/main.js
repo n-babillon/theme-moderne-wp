@@ -243,6 +243,65 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // =============================================================================
+    // ANIMATIONS CARTES D'ARTICLES
+    // =============================================================================
+    
+    // Observer pour animer l'apparition des cartes d'articles
+    if ('IntersectionObserver' in window) {
+        const postsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const postCard = entry.target;
+                    
+                    // Délai basé sur l'index de la carte
+                    const cards = Array.from(postCard.parentNode.children);
+                    const index = cards.indexOf(postCard);
+                    const delay = index * 100; // 100ms entre chaque carte
+                    
+                    setTimeout(() => {
+                        postCard.classList.add('animate-in');
+                    }, delay);
+                    
+                    // Ne déclencher qu'une seule fois
+                    postsObserver.unobserve(postCard);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // Observer toutes les cartes d'articles
+        const postCards = document.querySelectorAll('.post-card');
+        postCards.forEach(card => {
+            postsObserver.observe(card);
+        });
+    }
+    
+    // Gestion du chargement des images des cartes
+    function setupPostCardImages() {
+        const postImages = document.querySelectorAll('.post-card-image img');
+        
+        postImages.forEach(img => {
+            if (img.complete) {
+                img.classList.add('loaded');
+            } else {
+                img.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                });
+                
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    // Optionnel : ajouter une image de placeholder
+                });
+            }
+        });
+    }
+    
+    // Initialiser les images des cartes
+    setupPostCardImages();
+    
+    // =============================================================================
     // FORMULAIRES
     // =============================================================================
     
